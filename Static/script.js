@@ -24,8 +24,8 @@ function vars(data){
   return variables;
 }
 
-function renderData(accidentType) {
-  $.getJSON("/accidentType/" + accidentType, function(obj) {
+function renderData(accidentWeather) {
+  $.getJSON("/accidentWeather/" + accidentWeather, function(obj) {
       var markers = obj.data.map(function(arr) {
           return L.marker([arr[0], arr[1]]);
       });
