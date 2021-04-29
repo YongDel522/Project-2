@@ -18,10 +18,10 @@ def home():
     # Return template and data
     return render_template("index.html", trafficData=trafficData)
 
-@app.route('/accidentTypes/<string:type>')
-def accidentType(type):
-    trafficData = mongo.db.inventory.find({"type": "A"})
-    points = trafficData.query.filter_by(type=type).all()
+@app.route('/accidentWeather/<string:weather>')
+def accidentWeather(weather):
+    trafficData = mongo.db.inventory.find({"weather"})
+    points = trafficData.query.filter_by(weather=weather).all()
     coords = [[point.latitude, point.longitude] for point in points]
     return jsonify({"data": coords})
 
