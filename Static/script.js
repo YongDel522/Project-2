@@ -44,5 +44,5 @@ $(function() {
   });
 })
 
-// getData();
+getData();
 
