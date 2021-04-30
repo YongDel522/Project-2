@@ -6,7 +6,7 @@ import json
 conn = "mongodb://localhost:27017"
 client = pymongo.MongoClient(conn)
 
-db = client.traffic_accidents
+
 
 def traffic_accidents():
     
@@ -45,11 +45,6 @@ def traffic_accidents():
         'weather': weather
     })
 
-conn = "mongodb://localhost:27017"
-client = pymongo.MongoClient(conn)
-
-db = client.traffic_jams
-
 def traffic_jam():
     url = "https://municipal.systems/v1/places/ga/dataTypes/traffic-jam/data?key=dba4aa07-6314-42fd-927c-2f52106600fc"
 
@@ -72,3 +67,6 @@ def traffic_jam():
         'location': coord,
         'speed': speed
     })
+
+db_jams = client.traffic_jams
+db_accidents = client.traffic_accidents
