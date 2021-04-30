@@ -1,27 +1,41 @@
 const incident_url='https://municipal.systems/v1/places/ga/dataTypes/traffic-incident/data?key=3a58239a-1f90-4ecc-8a04-dbe14072128c';
-const jam_url = "https://municipal.systems/v1/places/ga/dataTypes/traffic-jam/data?key=dba4aa07-6314-42fd-927c-2f52106600fc"
+const jam_url = "https://municipal.systems/v1/places/ga/dataTypes/traffic-jam/data?key=dba4aa07-6314-42fd-927c-2f52106600fc";
 async function getData(incident_url,jam_url){
   const response=await fetch(incident_url);
+  const jam_response = await fetch(jam_url);
+  const jam_data = await jam_response.json();
   const data = await response.json();
     // console.log(data);
-    incident_variables = vars(data);
-    console.log(incident_variables);
+    // jam_variables = vars(jam_data, id='jam');
+    // incident_variables = vars(data, id='incident');
+    // console.log(incident_variables);
+  console.log(jam_data);
 }
 
-function vars(data){
+function vars(data, id){
   data = data['results']
   accidentType = [];
   coordinates = [];
   weather = [];
   dateTime = [];
-
-  for (item in data){
-    accidentType.push(data[item]['data']['type']);
-    coordinates.push(data[item]['geometry']['coordinates']);
-    weather.push(data[item]['data']['weather']);
-    dateTime.push(data[item]['data']['startedAt']);
+  if (id == 'incident'){
+    for (item in data){
+      accidentType.push(data[item]['data']['type']);
+      coordinates.push(data[item]['geometry']['coordinates']);
+      weather.push(data[item]['data']['weather']);
+      dateTime.push(data[item]['data']['startedAt']);
+    };
+    variables = [accidentType,coordinates,weather,dateTime];
   };
-  variables = [accidentType,coordinates,weather,dateTime];
+  if (id == 'jam'){
+    for(item in data){
+      severity.push(data[item]['data']['severity']);
+      coordinates.push(data[item]['geometry']['coordinates'][0]);
+      speed.push(data[item]['data']['speed']);
+      dateTime.push(data[item]['data']['endedAt']);
+    };
+    variables = [severity,coordinates,speed,dateTime];
+  };
   return variables;
 }
 
@@ -53,5 +67,5 @@ function renderData(accidentWeather) {
 //   });
 // })
 
-getData();
+getData(incident_url,jam_url);
 
