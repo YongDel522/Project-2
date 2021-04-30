@@ -28,6 +28,10 @@ function vars(data, id){
     variables = [accidentType,coordinates,weather,dateTime];
   };
   if (id == 'jam'){
+    severity = [];
+    coordinates = [];
+    speed = [];
+    dateTime = [];
     for(item in data){
       severity.push(data[item]['data']['severity']);
       coordinates.push(data[item]['geometry']['coordinates'][0]);
