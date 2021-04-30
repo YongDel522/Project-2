@@ -1,5 +1,0 @@
-Traffic API:
-https://municipal.systems/v1/places/ga/dataTypes/traffic-incident/data
-
-Income API:
-https://apps.bea.gov/api/data/?&UserID=<API_KEY>&method=GetData&datasetname=Regional&TableName=CAINC1&LineCode=3&GeoFIPS=GA&Year=2019&ResultFormat=JSON

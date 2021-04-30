@@ -23,13 +23,13 @@ function vars(data){
   variables = [accidentType,coordinates,weather,dateTime];
   return variables;
 }
-// function makeMap(){
-//   const mymap = L.map('mapid').setView([33.753746, -84.386330], 13);
-//   const attribution ='&copy;<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>contributors';
-//   const tileUrl= 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-//   const tiles = L.tileLayer(tileUrl,{ attribution });
-//   tiles.addTo(mymap);
-// }
+function makeMap(){
+  const mymap = L.map('mapid').setView([33.753746, -84.386330], 13);
+  const attribution ='&copy;<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>contributors';
+  const tileUrl= 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  const tiles = L.tileLayer(tileUrl,{ attribution });
+  tiles.addTo(mymap);
+}
 
 function renderData(accidentWeather) {
   $.getJSON("/accidentWeather/" + accidentWeather, function(obj) {
@@ -43,7 +43,7 @@ function renderData(accidentWeather) {
 }
 
 $(function() {
-  // makeMap();
+  makeMap();
   renderData('0');
   $('#accidentsel').change(function() {
       var val = $('#accidentsel option:selected').val();
