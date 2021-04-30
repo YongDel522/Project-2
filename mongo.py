@@ -68,5 +68,5 @@ def traffic_jam():
         'speed': speed
     })
 
-db_jams = client.traffic_jams
+db_jams = client.traffic_jam
 db_accidents = client.traffic_accidents
