@@ -6,11 +6,11 @@ async function getData(incident_url,jam_url){
   const jam_data = await jam_response.json();
   const data = await response.json();
     // console.log(data);
-    // jam_variables = vars(jam_data, id='jam');
-    // incident_variables = vars(data, id='incident');
+  jam_variables = vars(jam_data, id='jam');
+  incident_variables = vars(data, id='incident');
     // console.log(incident_variables);
-  console.log(jam_data);
-}
+  // console.log(jam_data);
+};
 
 function vars(data, id){
   data = data['results']
@@ -37,7 +37,7 @@ function vars(data, id){
     variables = [severity,coordinates,speed,dateTime];
   };
   return variables;
-}
+};
 
 function makeMap(){
   const mymap = L.map('mapid').setView([33.753746, -84.386330], 13);
@@ -45,7 +45,7 @@ function makeMap(){
   const tileUrl= 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   const tiles = L.tileLayer(tileUrl,{ attribution });
   tiles.addTo(mymap);
-}
+};
 
 function renderData(accidentWeather) {
   $.getJSON("/accidentWeather/" + accidentWeather, function(obj) {
