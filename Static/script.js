@@ -5,7 +5,7 @@ async function getData(incident_url,jam_url){
   const jam_response = await fetch(jam_url);
   const jam_data = await jam_response.json();
   const data = await response.json();
-    // console.log(data);
+    console.log(data);
   jam_variables = vars(jam_data, id='jam');
   incident_variables = vars(data, id='incident');
     // console.log(incident_variables);
@@ -16,13 +16,11 @@ function vars(data, id){
   data = data['results']
   accidentType = [];
   coordinates = [];
-  weather = [];
   dateTime = [];
   if (id == 'incident'){
     for (item in data){
-      accidentType.push(data[item]['data']['type']);
+      accidentType.push(data[item]['data']['cause']);
       coordinates.push(data[item]['geometry']['coordinates']);
-      weather.push(data[item]['data']['weather']);
       dateTime.push(data[item]['data']['startedAt']);
     };
     variables = [accidentType,coordinates,weather,dateTime];
@@ -30,12 +28,10 @@ function vars(data, id){
   if (id == 'jam'){
     severity = [];
     coordinates = [];
-    speed = [];
     dateTime = [];
     for(item in data){
       severity.push(data[item]['data']['severity']);
       coordinates.push(data[item]['geometry']['coordinates'][0]);
-      speed.push(data[item]['data']['speed']);
       dateTime.push(data[item]['data']['endedAt']);
     };
     variables = [severity,coordinates,speed,dateTime];
