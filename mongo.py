@@ -45,6 +45,10 @@ def traffic_accidents():
         'weather': weather
     })
 
+    db_accidents = filTrafData_df
+
+    return db_accidents
+
 def traffic_jam():
     url = "https://municipal.systems/v1/places/ga/dataTypes/traffic-jam/data?key=dba4aa07-6314-42fd-927c-2f52106600fc"
 
@@ -67,6 +71,10 @@ def traffic_jam():
         'location': coord,
         'speed': speed
     })
+
+    db_jams = trafficJam_df
+
+    return db_jams
 
 db_jams = client.traffic_jam
 db_accidents = client.traffic_accidents
