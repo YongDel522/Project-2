@@ -44,14 +44,14 @@ function renderData(accidentWeather) {
   });
 }
 
-$(function() {
-  makeMap();
-  renderData('0');
-  $('#accidentsel').change(function() {
-      var val = $('#accidentsel option:selected').val();
-      renderData(val);
-  });
-})
+// $(function() {
+//   makeMap();
+//   renderData('0');
+//   $('#accidentsel').change(function() {
+//       var val = $('#accidentsel option:selected').val();
+//       renderData(val);
+//   });
+// })
 
 getData();
 
