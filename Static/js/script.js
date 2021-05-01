@@ -1,5 +1,6 @@
 const incident_url='https://municipal.systems/v1/places/ga/dataTypes/traffic-incident/data?key=3a58239a-1f90-4ecc-8a04-dbe14072128c';
 const jam_url = "https://municipal.systems/v1/places/ga/dataTypes/traffic-jam/data?key=dba4aa07-6314-42fd-927c-2f52106600fc";
+var API_KEY = "pk.eyJ1IjoidmF1Z2huc21pdGg5OSIsImEiOiJja25sdHl4NDkwamt5MnZwZW54MncxcGdnIn0.Wd6jchvnzbb5spUE5l9Qaw";
 
 function createMap(accidentsAndJams) {
 
@@ -24,7 +25,7 @@ function createMap(accidentsAndJams) {
   // Create the map object with options
   var map = L.map("map-id", {
     center: [33.753746, -84.386330],
-    zoom: 12,
+    zoom: 10,
     layers: [lightmap, accidentsAndJams]
   });
 
